@@ -1,6 +1,0 @@
-node_modules
-.env
-/client.ts
-.tmp
-.DS_Store
-/dist

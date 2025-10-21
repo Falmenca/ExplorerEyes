@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import NavBar from "./components/NavBar";
+import NavBar from "../components/NavBar";
 
 export default function Page() {
   const [data, setData] = useState<{ ai: any; weather: any; health: any }>({
@@ -33,7 +33,7 @@ export default function Page() {
 
       <footer className="fixed bottom-0 text-xs/10 mt-20">
         <p style={{ textAlign: "center", marginBottom: 20 }}>
-          &copy; ExplorerEyes - UNLV 2025 
+          &copy; ExplorerEyes - UNLV 2025
         </p>
       </footer>
 

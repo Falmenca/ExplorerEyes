@@ -1,49 +1,37 @@
+// components/NavBar.tsx
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import { usePathname } from "next/navigation";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/overview", label: "Overview" },
+  { href: "/our-journey", label: "Our Journey" },
+  { href: "/about-us", label: "About us" },
+];
 
 export default function NavBar() {
+  const pathname = usePathname();
 
   return (
-    <div style={{display:'flex', alignItems:'start', textAlign:'left', width:'100%'}}>
-      <h1 className="font-mono text-2xl top-0 mt-15 mb-8 ml-5">
-          ExplorerEyes
-      </h1>
-      <div style={{flexGrow: 1, textAlign:'left'}} className="ml-20">
+    <nav className="h-20 w-full px-4 flex items-center shadow bg-navbar">
+      <h1 className="font-mono text-xl">ExplorerEyes</h1>
 
-        <Link href="/">
-        <button
-          className="font-sans text-m mt-20 ml-5 hover:cursor-pointer"
-        >
-          Home
-        </button>
-        </Link>
-
-        <Link href="/overview">
-        <button
-          className="font-sans text-m mt-20 ml-5 hover:cursor-pointer"
-        >
-          Overview
-        </button>
-        </Link>
-
-        <Link href="/ourjourney">
-          <button
-            className="font-sans text-m mt-20 ml-5 hover:cursor-pointer"
-          >
-            Our Journey
-          </button>
-        </Link>
-
-        <Link href="/aboutus">
-          <button
-            className="font-sans text-m mt-20 ml-5 hover:cursor-pointer"
-          >
-            About us
-        </button>
-        </Link>
-      </div>
-    </div>
+      <ul className="ml-8 flex gap-6">
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              className={`text-sm hover:opacity-80 ${
+                pathname === l.href ? "font-semibold underline" : ""
+              }`}
+            >
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

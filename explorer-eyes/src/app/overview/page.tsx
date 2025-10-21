@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 export default function Page() {
   const [data, setData] = useState<{ ai: any; weather: any; health: any }>({
@@ -20,22 +21,16 @@ export default function Page() {
 
   return (
 
-    <div className="grid grid-rows-[20px_1fr] items-center justify-items-center">
+    <div className="grid min-h-screen grid-rows-[auto_1fr_auto] gap-4">
 
-
-      <NavBar />
+      <header className="sticky top-0 z-50 bg-navbar/90 backdrop-blur">
+        <NavBar />
+      </header>
 
       <main style={{ maxWidth: 980, margin: "40px auto", padding: "0 16px" }}>
-
         <pre>{JSON.stringify(data, null, 2)}</pre>
-
       </main>
-
-      <footer className="fixed bottom-0 text-xs/10 mt-20">
-        <p style={{ textAlign: "center", marginBottom: 20 }}>
-          &copy; ExplorerEyes - UNLV 2025
-        </p>
-      </footer>
+        <Footer />
 
     </div>
   );

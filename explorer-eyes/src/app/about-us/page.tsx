@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
@@ -29,7 +30,24 @@ export default function Page() {
 
       <main style={{ maxWidth: 980, margin: "40px auto", padding: "0 16px" }}>
 
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <Image
+          src="/pictures/Posted.jpg"
+          alt="Serious Image"
+          width={500}
+          height={400}
+          className="mx-auto mb-8"
+        />
+        <p className="text-sm font-bold italic mb-15 mt-0 text-center">
+          Left to Right: Jared Idica (EE), Enrique Delacruz (CpE), Kristel Vinluan (EE), Jorge Zepeda (EE)
+        </p>
+
+        <Image
+          src="/pictures/Fun.jpg"
+          alt="Fun Image"
+          width={600}
+          height={400}
+          className="mx-auto mb-8"
+        />
 
       </main>
 

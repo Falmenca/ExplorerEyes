@@ -7,7 +7,7 @@ export default function Footer() {
 
     <div className="grid grid-rows-[20px_1fr] items-center justify-items-center">
 
-      <footer className="fixed bottom-0 text-xs/10 mt-20">
+      <footer className="sticky bottom-0 text-xs/10 mt-20">
         <p style={{ textAlign: "center", marginBottom: 20 }}>
           &copy; ExplorerEyes - UNLV 2025 
         </p>

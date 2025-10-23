@@ -36,7 +36,7 @@ export default function Page() {
                 </div>
                 <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-end aspect-[4/3] md:aspect-square p-2 bg-background/80 rounded-lg">
                     <Image
-                        src="/pictures/about.jpg"
+                        src="/pictures/Logo.jpg"
                         alt="EE 1"
                         fill
                         className="rounded-lg object-contain"

@@ -31,7 +31,7 @@ export default function Page() {
       <main style={{ maxWidth: 980, margin: "40px auto", padding: "0 16px" }}>
 
         <Image
-          src="/pictures/Posted.jpg"
+          src="/pictures/Misc/Posted.jpg"
           alt="Serious Image"
           width={500}
           height={400}
@@ -42,7 +42,7 @@ export default function Page() {
         </p>
 
         <Image
-          src="/pictures/Fun.jpg"
+          src="/pictures/Misc/Fun.jpg"
           alt="Fun Image"
           width={600}
           height={400}

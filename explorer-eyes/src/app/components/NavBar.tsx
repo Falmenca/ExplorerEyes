@@ -19,7 +19,7 @@ export default function NavBar() {
     <nav className="h-20 w-full px-4 flex items-center shadow bg-navbar">
       <Link href="/" className="mr-4 flex items-center gap-2">
         <Image 
-          src="/pictures/Logo.jpg" 
+          src="/pictures/Misc/Logo.jpg" 
           alt="ExplorerEyes" 
           width={80} 
           height={80} 

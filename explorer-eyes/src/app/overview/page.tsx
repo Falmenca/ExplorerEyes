@@ -36,7 +36,7 @@ export default function Page() {
                 </div>
                 <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-end aspect-[4/3] md:aspect-square p-2 bg-background/80 rounded-lg">
                     <Image
-                        src="/pictures/Logo.jpg"
+                        src="/pictures/Misc/Logo.jpg"
                         alt="EE 1"
                         fill
                         className="rounded-lg object-contain"
@@ -50,7 +50,7 @@ export default function Page() {
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 mx-4 md:mx-10">
                 <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1 p-2 bg-background/80 rounded-lg">
                     <Image
-                        src="/pictures/travel-stats.jpg"
+                        src="/pictures/Misc/travel-stats.jpg"
                         alt="EE 2"
                         fill
                         className="rounded-lg object-contain"
@@ -108,7 +108,7 @@ export default function Page() {
                 </div>
                 <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-end aspect-[4/3] md:aspect-square p-2 bg-background/80 rounded-lg">
                     <Image
-                        src="/pictures/even-g1.jpg"
+                        src="/pictures/Misc/even-g1.jpg"
                         alt="EE 3"
                         fill
                         className="rounded-lg object-contain"

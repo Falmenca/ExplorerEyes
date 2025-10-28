@@ -315,7 +315,7 @@ export default function Page() {
             elsewhere to get processed. Data from Arduino and Adafruit sensors will be demonstrated
             on the minidisplay in realtime. A video demonstration can be found ‎
 
-            <Link href="https://www.youtube.com/watch?v=5DX9hcn0gJo" className="text-blue-500 underline">
+            <Link target="_blank" href="https://www.youtube.com/watch?v=5DX9hcn0gJo" className="text-blue-500 underline">
               here
             </Link>
 
@@ -418,7 +418,7 @@ export default function Page() {
         <div>
           <header className="justify-center text-center text-xl font-bold">
             Repository to the Web Application: ‎ 
-            <Link href="https://github.com/Falmenca/ExplorerEyes" className="text-blue-500 underline">
+            <Link target="_blank" href="https://github.com/Falmenca/ExplorerEyes" className="text-blue-500 underline">
               https://github.com/Falmenca/ExplorerEyes
             </Link>
           </header>

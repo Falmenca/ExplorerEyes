@@ -60,7 +60,7 @@ export default function Page() {
             in the photos below.
           </p>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/Camera/TextDetectionDiagram.jpg"
             alt="Text Detection Diagram"
@@ -71,30 +71,29 @@ export default function Page() {
         </div>
 
         <div>
-          <header className="justify-center text-center text-xl font-bold">
-            At the moment, this module is mostly complete. The RPi can successfully take a picture,
-            apply preprocessing effects to it as needed, use Google’s Tesseract OCR to scan and
-            extract the text from the image, have that text sent to the translation module, then,
-            at the end, have it read out to the user via text-to-speech. The audio module will be
-            combined with the camera module until we can implement audio input through a microphone,
-            and have the user be able to switch between using the microphone or camera, which at that
-            point will be its module.
+          <header className="justify-center text-left text-xl font-bold ml-3">
+            The RPi can successfully take a picture, apply preprocessing effects to it as needed, 
+            use Google’s Tesseract OCR to scan and extract the text from the image, have that text 
+            sent to the translation module, then, at the end, have it read out to the user via
+            text-to-speech. The audio module will be combined with the camera module until we can
+            implement audio input through a microphone, and have the user be able to switch between
+            using the microphone or camera, which at that point will be its module.
           </header>
         </div>
 
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/Camera/Text7.jpg"
             alt="Text Detection"
             fill
-            className="rounded-lg object-contain"
+            className="rounded-lg object-contain justify-center "
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-          <header className="justify-center text-center text-xs italic">
-            Figure 1: Location inference (Suwon, South Korea) with Point of Interest detection, nearby landmarks, and texts/signs translation.
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 7: Camera pointed head-on, reading a German sign.
           </header>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/Camera/Text8.jpg"
             alt="Text Detection"
@@ -102,11 +101,11 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-          <header className="justify-center text-center text-xs italic">
-            Figure 2: Location inference (Kyoto, Japan) with Point of Interest detection, nearby landmarks, and texts/signs translation.
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 8: Camera looking at the sign at a slight vertical angle, reading a Spanish sign.
           </header>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/Camera/Text9.jpg"
             alt="Text Detection"
@@ -114,11 +113,11 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-          <header className="justify-center text-center text-xs italic">
-            Figure 2: Location inference (Kyoto, Japan) with Point of Interest detection, nearby landmarks, and texts/signs translation.
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 9: Camera looking at a German sign with underlined text, image has gone through preprocessing, 99% accuracy with the underlined ‘T’ being read wrong.
           </header>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/Camera/Text10.jpg"
             alt="Text Detection"
@@ -126,11 +125,11 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-          <header className="justify-center text-center text-xs italic">
-            Figure 2: Location inference (Kyoto, Japan) with Point of Interest detection, nearby landmarks, and texts/signs translation.
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 10: Camera reading an English sign at a ~25° angle, accuracy starts to drop.
           </header>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-bottom md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/Camera/Text11.jpg"
             alt="Text Detection"
@@ -138,8 +137,8 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-          <header className="justify-center text-center text-xs italic">
-            Figure 2: Location inference (Kyoto, Japan) with Point of Interest detection, nearby landmarks, and texts/signs translation.
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 11: Camera module with RPi itself, and a connected audio sound card with headphones and a microphone.
           </header>
         </div>
       </div>
@@ -180,7 +179,7 @@ export default function Page() {
             usability and accessibility for users.
           </p>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/Translation/TranslationDiagram.jpg"
             alt="Translation Diagram"
@@ -188,8 +187,11 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 9: Camera looking at a German sign with underlined text, image has gone through preprocessing, 99% accuracy with the underlined ‘T’ being read wrong.
+          </header>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/Translation/Translation12.jpg"
             alt="Translation12"
@@ -197,8 +199,11 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 12: English to French translation from an image.
+          </header>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/Translation/Translation13.jpg"
             alt="Translation13"
@@ -206,6 +211,9 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 13: French to English translation from an image
+          </header>
         </div>
       </div>
 
@@ -236,7 +244,7 @@ export default function Page() {
             script, followed by object recognition, GPS data matching and text translation.
           </p>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/GPS/GPSDiagram.jpg"
             alt="GPS1"
@@ -252,7 +260,7 @@ export default function Page() {
           </header>
         </div>
 
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/GPS/GPS1.jpg"
             alt="GPS1"
@@ -260,11 +268,11 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-          <header className="justify-center text-center text-xs italic">
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
             Figure 1: Location inference (Suwon, South Korea) with Point of Interest detection, nearby landmarks, and texts/signs translation.
           </header>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/GPS/GPS2.jpg"
             alt="GPS2"
@@ -272,7 +280,7 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-          <header className="justify-center text-center text-xs italic">
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
             Figure 2: Location inference (Kyoto, Japan) with Point of Interest detection, nearby landmarks, and texts/signs translation.
           </header>
         </div>
@@ -316,23 +324,41 @@ export default function Page() {
             be used in the projection system which is what the user will see on their lenses.
           </p>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
-            src="/pictures/GPS/GPS1.jpg"
-            alt="GPS1"
+            src="/pictures/Sensor/Sensor1.jpg"
+            alt="Sensor1"
             fill
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 4: Arduino Nano BLE 33 Rev2 with BMI 270 (Accelerometer/Gyroscope), BMM 150 (Magnetometer), HS3001 (Temperature/Humidity) 
+          </header>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
-            src="/pictures/GPS/GPS2.jpg"
-            alt="GPS2"
+            src="/pictures/Sensor/Sensor2.jpg"
+            alt="Sensor2"
             fill
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 3: Adafruit 1918 Breakout Board with GUVA S12D (white block) to collect UV light.
+          </header>
+        </div>
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
+          <Image
+            src="/pictures/Sensor/Sensor4.jpg"
+            alt="Sensor4"
+            fill
+            className="rounded-lg object-contain"
+            sizes="(min-width: 768px) 50vw, 100vw"
+          />
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
+            Figure 6: Minidisplay to demonstrate the sensor information in real time.
+          </header>
         </div>
       </div>
 
@@ -352,18 +378,34 @@ export default function Page() {
         </div>
         <div className="justify-self-center md:justify-self-start w-full max-w-[680px] md:max-w-[760px] font-mono text-md rounded-lg border border-foreground/10 bg-background/80 p-6">
           <p>
-            The system captures images of recognizable landmarks, buildings, and
-            signs, then automatically processes those visual features against online
-            map data and GPS coordinates to pinpoint your location. Additionally,
-            the system also identifies Points of Interest (POIs) and nearby landmarks
-            enhancing situational awareness for the user. When texts or signs are present,
-            Optical Character Recognition (OCR) is applied to extract and translate sign
-            information into the target language via the OpenAI API. The entire process
-            is automated from image acquisition through the Pi Camera Module 2 and a Python
-            script, followed by object recognition, GPS data matching and text translation.
+            The goal of the web application is to create a seamless pipeline that delivers real-time 
+            information such as weather updates, language translations, and simplified navigation 
+            directly to the glasses, both visually through a display and audibly through text-to-speech. 
+            The web application will serve as the control hub, allowing users to interact with services 
+            and feed instructions to the device. Communication between the web app and the Raspberry Pi 
+            will be maintained through a secure WebSocket connection, enabling the exchange of JSON messages 
+            that carry information, commands, and audio streams.
+          </p>
+          <p>
+            Server side, the Next.js application will expose API routes from bigger data collectors, including 
+            weather providers for live environmental updates and translation APIs for text and speech translation 
+            from AI hosts such as OpenAI. These routes will normalize the data and forward it in a format optimized 
+            for wearable output. Device authentication will rely on token-based pairing, with the web app generating 
+            short-lived tokens that the Raspberry Pi presents on connection, but this might not be possible to do in 
+            time. Once paired, the Raspberry Pi client will handle rendering captions on the glasses, playing audio 
+            files through text-to-speech, streaming microphone input for speech translation, and relaying data from 
+            the Arduino sensors.
+          </p>
+          <p>
+            The plan is to have user experience built around clarity and low distraction. Captions will be reformatted 
+            into concise text limited to short phrases, while spoken prompts will provide an auditory backup for 
+            hands-free use. The system hopes to remain resilient in real-world conditions, with reconnection logic, 
+            caching of frequently used phrases, and offline fallbacks to minimize disruption. If development goes well, 
+            in a real world product privacy and safety are central considerations, and all data exchanges will be encrypted, 
+            raw audio will not be stored by default, and users will have explicit control over whether logs are retained.
           </p>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/WebApp/WebAppDiagram.jpg"
             alt="Web Application Diagram"
@@ -382,7 +424,7 @@ export default function Page() {
           </header>
         </div>
 
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/WebApp/WebApp1.jpg"
             alt="WebApp1"
@@ -390,11 +432,11 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-          <header className="justify-center text-center text-xs italic">
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
             Figure 1: Location inference (Suwon, South Korea) with Point of Interest detection, nearby landmarks, and texts/signs translation.
           </header>
         </div>
-        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[4/3] md:aspect-square md:order-1">
+        <div className="relative w-full max-w-[680px] md:max-w-[760px] justify-self-center md:justify-self-start aspect-[3/3] md:aspect-square md:order-1">
           <Image
             src="/pictures/WebApp/WebApp2.jpg"
             alt="WebApp2"
@@ -402,7 +444,7 @@ export default function Page() {
             className="rounded-lg object-contain"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-          <header className="justify-center text-center text-xs italic">
+          <header className="absolute bottom-3 w-full text-center text-xs italic">
             Figure 2: Location inference (Kyoto, Japan) with Point of Interest detection, nearby landmarks, and texts/signs translation.
           </header>
         </div>

@@ -2,7 +2,6 @@
 
 export default function Footer() {
 
-
   return (
 
     <div className="grid grid-rows-[20px_1fr] items-center justify-items-center">

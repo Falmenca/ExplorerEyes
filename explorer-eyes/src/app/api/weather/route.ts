@@ -3,8 +3,6 @@
 // https://weather-gov.github.io/api/general-faqs
 // https://www.weather.gov/documentation/services-web-api 
 
-import { headers } from "next/headers";
-
 export const runtime = "nodejs";
 
 const BASE_URL = "https://api.weather.gov";
@@ -20,10 +18,12 @@ let grid = {
 }
 
 let forecast = {
+  name: "",
   temp: "",
   tempUnit: "",
   windSpeed: "",
   windDirection: "",
+  precipitation: "", // In percent 
 }
 
 export async function GET(req: Request) {
@@ -84,16 +84,20 @@ export async function GET(req: Request) {
   const forecastDataJson = await forecastData.json();
 
   for(const d in forecastDataJson.properties.periods[0]){
+    if(d==="name") forecast.name = forecastDataJson.properties.periods[0][d];
     if(d==="temperature") forecast.temp = forecastDataJson.properties.periods[0][d];
     if(d==="temperatureUnit") forecast.tempUnit = forecastDataJson.properties.periods[0][d];
     if(d==="windSpeed") forecast.windSpeed = forecastDataJson.properties.periods[0][d];
     if(d==="windDirection") forecast.windDirection = forecastDataJson.properties.periods[0][d];
+    if(d==="probabilityOfPrecipitation") forecast.precipitation = forecastDataJson.properties.periods[0][d].value;
   }
-  console.log(`Forecast Info - Temp: ${forecast.temp}${forecast.tempUnit}, Wind Speed: ${forecast.windSpeed}, Wind Direction: ${forecast.windDirection}`);
+
+  const forecastSummary = `${forecast.name} - Temp: ${forecast.temp}${forecast.tempUnit}, Wind Speed: ${forecast.windSpeed}, Wind Direction: ${forecast.windDirection}, Precipitation Chance: ${forecast.precipitation}%`
+  console.log(forecastSummary);
 
   return Response.json({
     ok: true,
-    data: `UNLV Forecast Info - Temp: ${forecast.temp}${forecast.tempUnit}, Wind Speed: ${forecast.windSpeed}, Wind Direction: ${forecast.windDirection}`,
+    data: forecastSummary,
     message: `Grid Info - ID: ${grid.id}, X: ${grid.x}, Y: ${grid.y}`,
     now: new Date().toISOString(),
   });

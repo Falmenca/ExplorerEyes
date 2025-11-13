@@ -1,32 +1,30 @@
-// src/app/api/ai/route.ts
-import { NextRequest, NextResponse } from 'next/server'
-import OpenAI from 'openai'
+// app/api/ai/route.ts
+import OpenAI from "openai";
+export const runtime = "nodejs";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+export async function GET(req: Request) {
 
-export async function POST(req: NextRequest) {
   try {
-    const { prompt } = await req.json()
-    if (!prompt || typeof prompt !== 'string') {
-      return NextResponse.json({ error: 'Missing prompt' }, { status: 400 })
-    }
+    const client = new OpenAI();
+    const response = await client.responses.create({
+      model: "gpt-5",
+      input: "Write a one-sentence bedtime story about a unicorn."
+    });
 
-    // Responses API (recommended)
-    const resp = await openai.responses.create({
-      model: 'gpt-5',            // pick your model
-      input: prompt,
-    })
+    console.log(response.output_text);
 
-    // Helper exposed by SDK to get the text output
-    const text = resp.output_text ?? ''
+    return Response.json({
+      ok: true,
+      message: "AI API alive",
+      now: new Date().toISOString(),
+    });
 
-    return NextResponse.json({ text, raw: resp })
-  } catch (err: any) {
-    console.error(err)
-    return NextResponse.json(
-      { error: err?.message ?? 'Server error' },
-      { status: 500 }
-    )
+  } catch (error) {
+    return Response.json({
+      ok: false,
+      error: error.message,
+      message: "Error communicating with OpenAI API",
+    });
   }
-}
 
+}

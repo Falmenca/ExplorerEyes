@@ -20,10 +20,22 @@ export async function GET(req: Request) {
     });
 
   } catch (error) {
+
+    let er = error as unknown;
+    
+    if (error instanceof Error) {
+      er = error.message;
+    } else if (typeof error === 'string') {
+      er = error.toString();
+    } else {
+      console.error('An unknown error occurred.');
+    }
+
     return Response.json({
       ok: false,
-      error: error.message,
+      error: er,
       message: "Error communicating with OpenAI API",
+      now: new Date().toISOString(),
     });
   }
 

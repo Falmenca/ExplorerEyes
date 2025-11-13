@@ -22,11 +22,11 @@ export async function GET(req: Request) {
   } catch (error) {
 
     let er = error as unknown;
-    
+
     if (error instanceof Error) {
       er = error.message;
     } else if (typeof error === 'string') {
-      er = error.toString();
+      er = "String error occurred: " + error;
     } else {
       console.error('An unknown error occurred.');
     }

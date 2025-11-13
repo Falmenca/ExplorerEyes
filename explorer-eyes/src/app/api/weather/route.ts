@@ -8,8 +8,8 @@ export const runtime = "nodejs";
 const BASE_URL = "https://api.weather.gov";
 
 // Base coordinates set for UNLV
-const latitude = "36.1699";
-const longitude = "-115.1398";
+const unlvLat = "36.1699";
+const unlvLon = "-115.1398";
 
 let grid = {
   id: "",
@@ -26,8 +26,7 @@ let forecast = {
   precipitation: "", // In percent 
 }
 
-export async function GET(req: Request) {
-
+export async function POST(req: Request) {
   // Fetch weather data from the API
   /*
     API Endpoint: https://api.weather.gov/points/{latitude},{longitude}
@@ -37,22 +36,31 @@ export async function GET(req: Request) {
       forecastHourly - forecast for hourly periods over the next seven days
       forecastGridData - raw forecast data over the next seven days
   */
-  const gridData = await fetch(`${BASE_URL}/points/${latitude},${longitude}`, {
+
+  // Tries to use provided lat/lon first
+  const body = await req.json();
+  let gridData = await fetch(`${BASE_URL}/points/${body.latitude},${body.longitude}`, {
     method: 'GET',
     headers: {
       'User-Agent': 'explorer-eyes/1.0 (https://github.com/Falmenca/explorer-eyes)',
       'Properties': 'gridId,gridX,gridY',
     }
   });
-
+  // If failed, defaults to UNLV coordinates
   if (!gridData.ok) {
-    return Response.json({
-      ok: false,
-      message: "Failed to fetch grid forecast endpoints from coordinates.",
+    console.error('Failed to fetch grid data from points endpoint. Defaulting to UNLV coordinates.');
+
+    gridData = await fetch(`${BASE_URL}/points/${unlvLat},${unlvLon}`, {
+      method: 'GET',
+      headers: {
+        'User-Agent': 'explorer-eyes/1.0 (https://github.com/Falmenca/explorer-eyes)',
+        'Properties': 'gridId,gridX,gridY',
+      }
     });
   }
   const gridDataJson = await gridData.json();
-
+  
+  // Extract grid information
   for(const d in gridDataJson.properties){
     if(d==="gridId") grid.id = gridDataJson.properties[d];
     if(d==="gridX") grid.x = gridDataJson.properties[d];

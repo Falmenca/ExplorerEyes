@@ -18,6 +18,8 @@ let grid = {
 }
 
 let forecast = {
+  city: "",
+  state: "",
   name: "",
   temp: "",
   tempUnit: "",
@@ -65,6 +67,8 @@ export async function POST(req: Request) {
     if(d==="gridId") grid.id = gridDataJson.properties[d];
     if(d==="gridX") grid.x = gridDataJson.properties[d];
     if(d==="gridY") grid.y = gridDataJson.properties[d];
+    if(d==="city") forecast.city = gridDataJson.properties[d];
+    if(d==="state") forecast.state = gridDataJson.properties[d];
   }
   console.log(`Grid Info - ID: ${grid.id}, X: ${grid.x}, Y: ${grid.y}`);
 
@@ -105,7 +109,11 @@ export async function POST(req: Request) {
 
   return Response.json({
     ok: true,
-    data: forecastSummary,
+    data: gridDataJson.properties,
+    location: `${forecast.city}, ${forecast.state}`,
+    summary: `${forecast.name} - Temp: ${forecast.temp}${forecast.tempUnit}`,
+    wind: `Wind Speed: ${forecast.windSpeed}, Wind Direction: ${forecast.windDirection}`,
+    precipitation: `Precipitation Chance: ${forecast.precipitation}%`,
     message: `Grid Info - ID: ${grid.id}, X: ${grid.x}, Y: ${grid.y}`,
     now: new Date().toISOString(),
   });

@@ -47,11 +47,11 @@ export default function Page() {
   return (
     <div
       style={{ width: 2000, margin: "40px auto", padding: "0 16px" }}
-      className="bordered rounded-lg border-foreground/10 bg-background/80 p-9 shadow-[#313aaa] shadow-md"
+      className="bordered rounded-lg border-foreground/10 bg-background/80 p-9 shadow-[#313aaa] shadow-md justify-center text-center"
     >
       {/* AI Response */}
       <div>
-        <header className="mb-1 mt-7 justify-center text-center text-s font-bold">
+        <header className="mb-1 mt-7 text-s font-bold">
           AI Prompt Response
         </header>
       </div>
@@ -59,15 +59,15 @@ export default function Page() {
 
       {/* Weather Response */}
       <div>
-        <header className="mb-1 mt-7 justify-center text-center text-s font-bold">
+        <header className="mb-1 mt-7 text-s font-bold">
           Weather Data Fetcher
         </header>
       </div>
 
-      <pre className="justify-center text-center">{weather?.data}</pre>
-      <pre className="justify-center text-center">{weather?.message}</pre>
+      <pre> {"Location: "} {weather?.location}</pre>
+      <pre>{JSON.stringify(weather?.data, null, 2)}</pre>
 
-       <form onSubmit={handleSubmit} style={{ marginBottom: 16 }} className="justify-center text-center">
+       <form onSubmit={handleSubmit} style={{ marginBottom: 16 }}>
         <div style={{ marginBottom: 8, marginTop: 16 }}>
           <label>
             Lat:{" "}
@@ -91,18 +91,13 @@ export default function Page() {
         <button type="submit" className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 cursor: pointer">Fetch data</button>
       </form>
 
-      <div>
-        <header className="mb-7 mt-7 justify-left text-left text-xs">
-        </header>
-      </div>
-
       {/* Health Response */}
       <div>
-        <header className="mb-1 mt-7 justify-center text-center text-s font-bold">
+        <header className="mb-1 mt-7 text-s font-bold">
           GPS
         </header>
       </div>
-      <pre className="justify-center text-center mb-10">{JSON.stringify(health, null, 2)}</pre>
+      <pre className="mb-10">{JSON.stringify(health, null, 2)}</pre>
 
     </div>
   );

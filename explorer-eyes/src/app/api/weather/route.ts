@@ -11,6 +11,8 @@ const BASE_URL = "https://api.weather.gov";
 const unlvLat = "36.1699";
 const unlvLon = "-115.1398";
 
+let msg = "";
+
 let grid = {
   id: "",
   x: "",
@@ -41,6 +43,8 @@ export async function POST(req: Request) {
 
   // Tries to use provided lat/lon first
   const body = await req.json();
+  msg = "";
+  
   let gridData = await fetch(`${BASE_URL}/points/${body.latitude},${body.longitude}`, {
     method: 'GET',
     headers: {
@@ -48,9 +52,17 @@ export async function POST(req: Request) {
       'Properties': 'gridId,gridX,gridY',
     }
   });
-  // If failed, defaults to UNLV coordinates
-  if (!gridData.ok) {
-    console.error('Failed to fetch grid data from points endpoint. Defaulting to UNLV coordinates.');
+
+  if(gridData.ok){
+    console.log("\n");
+    console.log(`Successfully fetched grid data for coordinates: ${body.latitude}, ${body.longitude}`);
+    msg = `Successfully fetched grid data for coordinates: ${body.latitude}, ${body.longitude}`;
+  } else { // Fallback to UNLV coordinates
+    if(body.latitude != "" && body.longitude != "") {
+      console.log("\n");
+      console.error(`Error fetching grid data for coordinates: ${body.latitude}, ${body.longitude}. Defaulting to UNLV coordinates.`);
+      msg = `Error fetching grid data for coordinates: ${body.latitude}, ${body.longitude}. Defaulting to UNLV coordinates.`;
+    }
 
     gridData = await fetch(`${BASE_URL}/points/${unlvLat},${unlvLon}`, {
       method: 'GET',
@@ -67,10 +79,9 @@ export async function POST(req: Request) {
     if(d==="gridId") grid.id = gridDataJson.properties[d];
     if(d==="gridX") grid.x = gridDataJson.properties[d];
     if(d==="gridY") grid.y = gridDataJson.properties[d];
-    if(d==="city") forecast.city = gridDataJson.properties[d];
-    if(d==="state") forecast.state = gridDataJson.properties[d];
+    if(d==="relativeLocation") forecast.city = gridDataJson.properties[d].properties["city"];
+    if(d==="relativeLocation") forecast.state = gridDataJson.properties[d].properties["state"];
   }
-  console.log(`Grid Info - ID: ${grid.id}, X: ${grid.x}, Y: ${grid.y}`);
 
   /*
     Forecasts are created at each NWS Weather Forecast Office (WFO) on their own grid definition, 
@@ -104,17 +115,27 @@ export async function POST(req: Request) {
     if(d==="probabilityOfPrecipitation") forecast.precipitation = forecastDataJson.properties.periods[0][d].value;
   }
 
+  const gridInfo = `Grid Info - ID: ${grid.id}, X: ${grid.x}, Y: ${grid.y}`;
+  const locationInfo = `Location Info - City: ${forecast.city}, State: ${forecast.state}`;
   const forecastSummary = `${forecast.name} - Temp: ${forecast.temp}${forecast.tempUnit}, Wind Speed: ${forecast.windSpeed}, Wind Direction: ${forecast.windDirection}, Precipitation Chance: ${forecast.precipitation}%`
+  console.log("\n--- Weather Forecast Summary ---");
+  console.log(gridInfo);
+  console.log(locationInfo);
   console.log(forecastSummary);
+  console.log("--------------------------------\n");
+
+  /*
+    Response
+  */
 
   return Response.json({
     ok: true,
-    data: gridDataJson.properties,
-    location: `${forecast.city}, ${forecast.state}`,
+    data: forecastDataJson,
+    location: `${forecast.city ? forecast.city : "Unknown"}, ${forecast.state ? forecast.state : "Unknown"}`,
     summary: `${forecast.name} - Temp: ${forecast.temp}${forecast.tempUnit}`,
     wind: `Wind Speed: ${forecast.windSpeed}, Wind Direction: ${forecast.windDirection}`,
     precipitation: `Precipitation Chance: ${forecast.precipitation}%`,
-    message: `Grid Info - ID: ${grid.id}, X: ${grid.x}, Y: ${grid.y}`,
+    message: msg,
     now: new Date().toISOString(),
   });
 }

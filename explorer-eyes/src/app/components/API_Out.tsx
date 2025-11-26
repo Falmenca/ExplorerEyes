@@ -65,23 +65,27 @@ export default function Page() {
       </div>
 
       <pre> {"Location: "} {weather?.location}</pre>
-      <pre>{JSON.stringify(weather?.data, null, 2)}</pre>
+      <pre> {weather?.summary}</pre>
+      <pre> {"Wind: "} {weather?.wind}</pre>
+      <pre> {"Precipitation: "} {weather?.precipitation}</pre>
 
        <form onSubmit={handleSubmit} style={{ marginBottom: 16 }}>
-        <div style={{ marginBottom: 8, marginTop: 16 }}>
-          <label>
-            Lat:{" "}
+        <div style={{ marginBottom: 3, marginTop: 16 }}>
+          <label className="justify-center text-md font-bold text-red-700">
+            Latitude: {" "}
             <input
+              className="border border-navbar rounded-xs p-1"
               value={latitude}
               onChange={e => setLatitude(e.target.value)}
               placeholder="33.9400"
             />
           </label>
         </div>
-        <div style={{ marginBottom: 8 }}>
-          <label>
-            Lon:{" "}
+        <div style={{ marginBottom: 10 }}>
+          <label className="justify-center text-md font-bold text-blue-700">
+            Longitude: {" "}
             <input
+              className="border border-navbar rounded-xs p-1"
               value={longitude}
               onChange={e => setLongitude(e.target.value)}
               placeholder="118.4039"
@@ -89,6 +93,7 @@ export default function Page() {
           </label>
         </div>
         <button type="submit" className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 cursor: pointer">Fetch data</button>
+        <p className="mt-2 text-sm font-bold text-gray-500">{weather?.message}</p>
       </form>
 
       {/* Health Response */}

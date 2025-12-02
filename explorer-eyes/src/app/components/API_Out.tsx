@@ -77,7 +77,7 @@ export default function Page() {
               className="border border-navbar rounded-xs p-1"
               value={latitude}
               onChange={e => setLatitude(e.target.value)}
-              placeholder="33.9400"
+              placeholder="39.7456"
             />
           </label>
         </div>
@@ -88,7 +88,7 @@ export default function Page() {
               className="border border-navbar rounded-xs p-1"
               value={longitude}
               onChange={e => setLongitude(e.target.value)}
-              placeholder="118.4039"
+              placeholder="-97.0892"
             />
           </label>
         </div>
